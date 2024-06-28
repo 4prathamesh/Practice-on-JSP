@@ -15,7 +15,7 @@
 	ResultSet rs;
 %>
 	<table border="5" width="50%" align="center">
-	<tr><th>ID</th><th>Name</th><th>Salary</th>
+	<tr><th>ID</th><th>Name</th><th>Salary</th><th>Delete</th><th>Update</th>
 	</tr>
 	
 	<%
@@ -25,7 +25,23 @@
 		conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/tp","root","12345");
 		if(conn!=null)
 		{
-			conn.prepareStatement("");
+			pstmt=conn.prepareStatement("select *from jspemployee");
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				int eid=rs.getInt(1);
+				String name=rs.getString(2);
+				long sal=rs.getLong(3);
+				%>
+					<tr>
+					<td><%=eid %></td>
+					<td><%=name %></td>
+					<td><%=sal %></td>
+					<td><a href="">Delete</a></td>
+					<td><a href="">Update</a></td>
+					</tr>
+				<%
+			}
 		}
 		else{
 			out.println("<h1>Error in Data Store</h1>");
