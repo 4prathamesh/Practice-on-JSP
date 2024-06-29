@@ -37,8 +37,8 @@
 					<td><%=eid %></td>
 					<td><%=name %></td>
 					<td><%=sal %></td>
-					<td><a href="">Delete</a></td>
-					<td><a href="">Update</a></td>
+					<td><a href='delete.jsp?eid=<%=eid%>'>Click</a></td>
+					<td><a href="update.jsp?eid=<%=eid%>&name=<%=name%>&salary=<%=sal%>">Click</a></td>
 					</tr>
 				<%
 			}
